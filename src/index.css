@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --bg-primary: #0B1026;
+    --bg-secondary: rgba(59, 130, 246, 0.1);
+    --accent-primary: #3b82f6;
+    --accent-secondary: #8b5cf6;
+    --card-bg: rgba(13, 19, 45, 0.7);
+  }
+
+  :root.light {
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --bg-primary: #f7faff;
+    --bg-secondary: rgba(59, 130, 246, 0.05);
+    --accent-primary: #3b82f6;
+    --accent-secondary: #8b5cf6;
+    --card-bg: rgba(255, 255, 255, 0.8);
+  }
+
+  :root.high-contrast {
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --accent-primary: #ffff00;
+    --accent-secondary: #00ffff;
+    --card-bg: rgba(0, 0, 0, 0.9);
+  }
+
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)];
+  }
+
+  .reduce-motion * {
+    @apply transition-none transform-none animate-none;
+  }
+
+  #tsparticles {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 0 !important;
+  }
+}
+
+@layer components {
+  .cosmic-button {
+    @apply px-6 py-2 rounded-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]
+           hover:from-[var(--accent-secondary)] hover:to-[var(--accent-primary)] transition-all duration-300
+           flex items-center space-x-2 text-white;
+  }
+
+  .cosmic-card {
+    @apply p-6 rounded-lg backdrop-blur-sm;
+    background: var(--card-bg);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+
+  .cosmic-input {
+    @apply border rounded-lg px-4 py-2 transition-all duration-300 text-[var(--text-primary)];
+    background: var(--card-bg);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .cosmic-input:focus {
+    @apply outline-none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+}

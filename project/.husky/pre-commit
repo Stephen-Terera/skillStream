@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run dependency check
+npm run check-deps
+
+# If check-deps fails, prevent commit
+if [ $? -ne 0 ]; then
+  echo "❌ Dependency check failed. Please add missing dependencies to package.json"
+  exit 1
+fi
